@@ -165,6 +165,8 @@ echo '--'
 
     apt-get -qq install -y mate-core
     apt-get -qq install -y mate-desktop-environment-core
+    apt-get -qq install -y mate-tweak
+    apt-get -qq install -y mate-user-guide mate-utils-common mate-menu mate-control-center-common
     #apt-get -qq install -y mate-core mate-desktop-environment mate-notification-daemon
     apt-get install -y mate-themes ubuntu-mate-wallpapers-utopic ubuntu-mate-wallpapers-vivid
     apt-get install -y fonts-inconsolata fonts-dejavu fonts-droid-fallback fonts-liberation fonts-ubuntu-font-family-console
