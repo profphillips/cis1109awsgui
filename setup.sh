@@ -1,7 +1,7 @@
 #!/bin/bash
 echo '-----------------------------------------------------------------------------------------------'
-echo '---- UPDATING THE SYSTEM FOR AWS EC2 MULTIUSER CLASSROOM SERVER'
-echo '---- version 2016-08-03'
+echo '---- UPDATING THE SYSTEM FOR AWS EC2 MULTIUSER SERVER for beginning Python class cis1109'
+echo '---- version 2016-08-18'
 echo '---- run as root'
 echo '-----------------------------------------------------------------------------------------------'
 
@@ -36,62 +36,26 @@ echo '---- PYTHON AND PYTHON3 ARE PREINSTALLED'
 python3 --version
 echo '--'
 
-echo '---- RUBY IS PREINSTALLED ON VAGRANT BUT NOT ON AWS'
-apt-get -qq install -y ruby
-ruby --version
-echo '--'
-
-echo '---- INSTALLING C AND C++ COMPILERS'
-apt-get -qq install -y build-essential
-gcc --version
-g++ --version
-echo '--'
-
-#echo '---- INSTALLING C# COMPILER'
-#apt-get -qq install -y mono-complete
-#mono
+#echo '---- RUBY IS PREINSTALLED ON VAGRANT BUT NOT ON AWS'
+#apt-get -qq install -y ruby
+#ruby --version
 #echo '--'
 
-#echo '---- INSTALLING GO'
-#apt-get -qq install -y golang
-#go version
+#echo '---- INSTALLING C AND C++ COMPILERS'
+#apt-get -qq install -y build-essential
+#gcc --version
+#g++ --version
 #echo '--'
 
-echo '---- INSTALLING JAVA 8 COMPILER'
-apt-get -qq install -y openjdk-8-jdk
-javac -version
-java -version
+#echo '---- INSTALLING JAVA 8 COMPILER'
+#apt-get -qq install -y openjdk-8-jdk
+#javac -version
+#java -version
 
 #echo '---- INSTALLING JAVA/MYSQL JDBC DRIVER'
 #apt-get -qq install libmysql-java
 #echo 'CLASSPATH=.:/usr/share/java/mysql-connector-java.jar' >> /etc/environment
 #echo '--'
-
-#echo '---- INSTALLING CLOJURE'
-#apt-get install -y clojure1.6
-#echo '--'
-
-#echo '---- INSTALLING LEGACY COMPILERS'
-#echo '--'
-
-#echo '---- INSTALLING FORTRAN COMPILER'
-#apt-get install -y gfortran
-#gfortran --version
-#echo '--'
-
-#echo '---- INSTALLING COBOL COMPILER'
-#apt-get install -y open-cobol
-#cobc -V
-#echo '--'
-
-#echo '---- INSTALLING PL/I COMPILER'
-#wget http://www.iron-spring.com/pli-0.9.9.tgz
-#tar -xvzf pli-0.9.9.tgz
-#cd pli-0.9.9
-#make install
-#cd ..
-#rm -f pli-0.9.9.tgz
-#plic -V
 
 echo '--'
 echo '--'
@@ -140,18 +104,6 @@ chmod 755 /var/log/apache2
 sed -i 's/create 640 root adm/create 644 root adm/' /etc/logrotate.d/apache2
 echo '--'
 
-
-#echo '---- INSTALLING TOMCAT JAVA WEB SERVER'
-#apt-get -qq install -y tomcat8 tomcat8-docs tomcat8-admin tomcat8-examples
-#systemctl status tomcat8
-#echo '--'
-
-#echo '---- CONFIGURE TOMCAT'
-#echo '---- SET THE TOMCAT ADMIN USER: tomcat'
-#echo '---- SET THE TOMCAT ADMIN PASSWORD: tomcatpw'
-#echo '---- UPLOAD AND RUN JSP PROGRAMS AT BROWSER URL OF: ipaddress:8080'
-#sed -i 's/<\/tomcat-users>/  <user username="tomcat" password="mucis" roles="manager-gui,admin-gui"\/><\/tomcat-users>/' #systemctl restart tomcat8
-
 echo '--'
 echo '--'
 echo '--'
@@ -197,25 +149,6 @@ echo '--'
     apt-get install -y python3-tk
     echo '--'
 
-
-    echo '-----------------------------------------------------------------------------------------------'
-    echo '---- INSTALLING GUI IDEs'
-    echo '-----------------------------------------------------------------------------------------------'
-
-#    echo '---- INSTALLING C, C++, C# Mono IDE'
-#    apt-get install -y monodevelop
-#    echo '--'
-#
-#    echo '---- INSTALLING SPRING STS / ECLIPSE IDE'
-#    wget http://dist.springsource.com/release/STS/3.7.2.RELEASE/dist/e4.5/spring-tool-suite-3.7.2.RELEASE-e4.5.1-linux-gtk-x86_64                            .tar.gz
-#    tar xvzf spring-tool-suite-3.7.2.RELEASE-e4.5.1-linux-gtk-x86_64.tar.gz
-#    rm -f spring-tool-suite-3.7.2.RELEASE-e4.5.1-linux-gtk-x86_64.tar.gz
-#    echo 'RUN AS: ~/sts-bundle/sts-3.7.2.RELEASE/STS'
-#    echo '--'
-#
-    #echo '---- INSTALLING NETBEANS IDE (as of 20160118 installing older version 8.0.2)'
-    #apt-get install -y netbeans
-
 echo '--'
 echo '--'
 echo '--'
@@ -229,33 +162,10 @@ mkdir /etc/skel/public_html/test
 
 echo "<html><body>Hello from HTML</body></html>" > /etc/skel/public_html/test/htmltest.html
 
-#echo "<?php phpinfo(); ?>" > /etc/skel/public_html/test/phptest.php
-
-#echo "#!/usr/bin/perl" > /etc/skel/public_html/test/perltest.pl
-#echo 'print "Content-type: text/html\n\n";' >> /etc/skel/public_html/test/perltest.pl
-#echo 'print "Hello from Perl\n";' >> /etc/skel/public_html/test/perltest.pl
-#chmod 755 /etc/skel/public_html/test/perltest.pl
-
 echo "#!/usr/bin/python3" > /etc/skel/public_html/test/pythontest.py
 echo 'print ("Content-type: text/html\n\n")' >> /etc/skel/public_html/test/pythontest.py
 echo 'print ("Hello from Python\n")' >> /etc/skel/public_html/test/pythontest.py
 chmod 755 /etc/skel/public_html/test/pythontest.py
-
-#echo "#!/usr/bin/ruby" > /etc/skel/public_html/test/rubytest.rb
-#echo 'print "Content-type: text/html\n\n"' >> /etc/skel/public_html/test/rubytest.rb
-#echo 'print "<html><body><p>Hello using Ruby!</p></body></html>"' >> /etc/skel/public_html/test/rubytest.rb
-#chmod 755 /etc/skel/public_html/test/rubytest.rb
-#echo '--'
-
-#echo "import java.sql.Connection;" > /etc/skel/public_html/test/JDBCTest.java
-#echo "import java.sql.DriverManager;" >> /etc/skel/public_html/test/JDBCTest.java
-#echo "class JDBCTest {" >> /etc/skel/public_html/test/JDBCTest.java
-#echo "public static void main(String[] args) {" >> /etc/skel/public_html/test/JDBCTest.java
-#echo '  try(Connection con=DriverManager.getConnection("jdbc:mysql://localhost","yourdbusername","yourdbuserpassword")){' >> /etc/skel/public_html/test/JDBCTest.java
-#echo '  System.out.println("Connected");' >> /etc/skel/public_html/test/JDBCTest.java
-#echo '} catch (Exception e) {' >> /etc/skel/public_html/test/JDBCTest.java
-#echo '  e.printStackTrace();' >> /etc/skel/public_html/test/JDBCTest.java
-#echo '}}}' >> /etc/skel/public_html/test/JDBCTest.java
 
 echo '---- ADDING TEST USER jdoe'
 useradd -m jdoe -c 'Jane Doe' -s '/bin/bash'
@@ -269,24 +179,13 @@ echo '---- ALLOWING PASSWORD LOGINS - BE SURE TO SET AWS FIREWALL CORRECTLY TO L
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
 echo '--'
 
-#echo '---- CREATING A TEST DATABASE FOR jdoe'
-#mysql -uroot -e "create database jdoe"
-#mysql -uroot -e "GRANT ALL PRIVILEGES ON jdoe.* TO jdoe@localhost IDENTIFIED BY 'mucis'"
-#mysql -ujdoe -pmucis -e "use jdoe;drop table if exists address;create table address(name varchar(50) not null, street varchar(50) not null, primary key(name));"
-#mysql -ujdoe -pmucis -e "use jdoe;insert into address values('Jane', '123 Main Street');insert into address values('Bob', '222 Oak Street');insert into address values('Sue', '555 Trail Street');"
-#echo '--'
-
-
 echo '-----------------------------------------------------------------------------------------------'
 echo '--- REMINDERS'
 echo '-----------------------------------------------------------------------------------------------'
 echo '---- Do not forget to set AWS firewall to limit SSH connections to just a few specific ip addresses'
 echo '---- Admin user: ubuntu password: none, log in using AWS private key'
 echo '---- Test user: jdoe password: mucis'
-echo '---- MySQL admin user: root password: none'
 echo '---- MySQL jdoe user: jdoe password: mucis'
-echo '---- Tomcat admin user: tomcat password: mucis'
-echo '---- SECURE MYSQL USING: sudo mysql_secure_installation'
 echo '---- REPLACE THE ABOVE PASSWORDS'
 echo '---- REBOOT THE SERVER FROM THE AWS CONTROL PANEL'
 echo '--'

@@ -1,0 +1,50 @@
+<!DOCTYPE Menu
+  PUBLIC '-//freedesktop//DTD Menu 1.0//EN'
+  'http://standards.freedesktop.org/menu-spec/menu-1.0.dtd'>
+<Menu>
+	<Name>Applications</Name>
+	<MergeFile type="parent">/etc/xdg/menus/mate-applications.menu</MergeFile>
+	<Menu>
+		<Name>Graphics</Name>
+		<DirectoryDir>/home/jdoe/.local/share/desktop-directories</DirectoryDir>
+	</Menu>
+	<Menu>
+		<Name>Accessories</Name>
+		<Exclude>
+			<Filename>byobu.desktop</Filename>
+		</Exclude>
+		<AppDir>/home/jdoe/.local/share/applications</AppDir>
+		<Exclude>
+			<Filename>gvim.desktop</Filename>
+		</Exclude>
+		<Exclude>
+			<Filename>vim.desktop</Filename>
+		</Exclude>
+		<Include>
+			<Filename>mate-about.desktop</Filename>
+		</Include>
+	</Menu>
+	<Menu>
+		<Name>Development</Name>
+		<Include>
+			<Filename>python3.5.desktop</Filename>
+		</Include>
+		<AppDir>/home/jdoe/.local/share/applications</AppDir>
+	</Menu>
+	<Menu>
+		<Name>System</Name>
+		<Exclude>
+			<Filename>debian-uxterm.desktop</Filename>
+		</Exclude>
+		<AppDir>/home/jdoe/.local/share/applications</AppDir>
+		<Exclude>
+			<Filename>debian-xterm.desktop</Filename>
+		</Exclude>
+		<Include>
+			<Filename>caja-home.desktop</Filename>
+		</Include>
+		<Include>
+			<Filename>caja-computer.desktop</Filename>
+		</Include>
+	</Menu>
+</Menu>

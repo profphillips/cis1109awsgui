@@ -1,0 +1,53 @@
+<!DOCTYPE Menu
+  PUBLIC '-//freedesktop//DTD Menu 1.0//EN'
+  'http://standards.freedesktop.org/menu-spec/menu-1.0.dtd'>
+<Menu>
+	<Name>Desktop</Name>
+	<MergeFile type="parent">/etc/xdg/menus/mate-settings.menu</MergeFile>
+	<Menu>
+		<Name>Preferences</Name>
+		<Menu>
+			<Name>Hardware</Name>
+			<DirectoryDir>/home/jdoe/.local/share/desktop-directories</DirectoryDir>
+		</Menu>
+		<Menu>
+			<Name>Internet and Network</Name>
+			<DirectoryDir>/home/jdoe/.local/share/desktop-directories</DirectoryDir>
+		</Menu>
+		<Menu>
+			<Name>Personal</Name>
+			<DirectoryDir>/home/jdoe/.local/share/desktop-directories</DirectoryDir>
+		</Menu>
+		<AppDir>/home/jdoe/.local/share/applications</AppDir>
+		<Menu>
+			<Name>Look and Feel</Name>
+			<DirectoryDir>/home/jdoe/.local/share/desktop-directories</DirectoryDir>
+		</Menu>
+		<Menu>
+			<Name>Other</Name>
+			<DirectoryDir>/home/jdoe/.local/share/desktop-directories</DirectoryDir>
+		</Menu>
+		<Include>
+			<Filename>mozo.desktop</Filename>
+		</Include>
+		<Exclude>
+			<Filename>mate-tweak.desktop</Filename>
+		</Exclude>
+		<Exclude>
+			<Filename>mate-settings-mouse.desktop</Filename>
+		</Exclude>
+		<Exclude>
+			<Filename>mate-theme-installer.desktop</Filename>
+		</Exclude>
+		<Include>
+			<Filename>mate-appearance-properties.desktop</Filename>
+		</Include>
+		<Exclude>
+			<Filename>matecc.desktop</Filename>
+		</Exclude>
+	</Menu>
+	<Exclude>
+		<Filename>matecc.desktop</Filename>
+	</Exclude>
+	<AppDir>/home/jdoe/.local/share/applications</AppDir>
+</Menu>
