@@ -57,15 +57,15 @@ echo '--'
 #echo 'CLASSPATH=.:/usr/share/java/mysql-connector-java.jar' >> /etc/environment
 #echo '--'
 
-echo '--'
-echo '--'
-echo '--'
-echo '-----------------------------------------------------------------------------------------------'
-echo '---- INSTALLING LAMP: APACHE2, MYSQL, AND PHP'
-echo '-----------------------------------------------------------------------------------------------'
+#echo '--'
+#echo '--'
+#echo '--'
+#echo '-----------------------------------------------------------------------------------------------'
+#echo '---- INSTALLING LAMP: APACHE2, MYSQL, AND PHP'
+#echo '-----------------------------------------------------------------------------------------------'
 
-apt-get -qq install -y apache2
-echo '--'
+#apt-get -qq install -y apache2
+#echo '--'
 
 #echo '---- INSTALLING PHP5'
 #apt-get -qq install -y php5 php5-mysql libapache2-mod-php5 php5-gd php5-imagick php-pear php5-json
@@ -75,34 +75,34 @@ echo '--'
 #DEBIAN_FRONTEND=noninteractive apt-get -y install mysql-server
 #echo '--'
 
-echo '---- CONFIGURE APACHE2 with CGI and User directories'
-echo "ServerName localhost" > /etc/apache2/conf-available/servername.conf
-a2enconf servername.conf
+#echo '---- CONFIGURE APACHE2 with CGI and User directories'
+#echo "ServerName localhost" > /etc/apache2/conf-available/servername.conf
+#a2enconf servername.conf
 
-sed -i 's/#AddHandler cgi-script .cgi/AddHandler cgi-script .cgi .pl .py .rb/' /etc/apache2/mods-available/mime.conf
+#sed -i 's/#AddHandler cgi-script .cgi/AddHandler cgi-script .cgi .pl .py .rb/' /etc/apache2/mods-available/mime.conf
 
-sed -i 's/IncludesNoExec/ExecCGI/' /etc/apache2/mods-available/userdir.conf
+#sed -i 's/IncludesNoExec/ExecCGI/' /etc/apache2/mods-available/userdir.conf
 
-sed -i 's/<IfModule mod_userdir.c>/#<IfModule mod_userdir.c>/' /etc/apache2/mods-available/php5.conf
-sed -i 's/    <Directory/#    <Directory/' /etc/apache2/mods-available/php5.conf
-sed -i 's/        php_admin_flag engine Off/#        php_admin_flag engine Off/' /etc/apache2/mods-available/php5.conf
-sed -i 's/    <\/Directory>/#    <\/Directory>/' /etc/apache2/mods-available/php5.conf
-sed -i 's/<\/IfModule>/#<\/IfModule>/' /etc/apache2/mods-available/php5.conf
+#sed -i 's/<IfModule mod_userdir.c>/#<IfModule mod_userdir.c>/' /etc/apache2/mods-available/php5.conf
+#sed -i 's/    <Directory/#    <Directory/' /etc/apache2/mods-available/php5.conf
+#sed -i 's/        php_admin_flag engine Off/#        php_admin_flag engine Off/' /etc/apache2/mods-available/php5.conf
+#sed -i 's/    <\/Directory>/#    <\/Directory>/' /etc/apache2/mods-available/php5.conf
+#sed -i 's/<\/IfModule>/#<\/IfModule>/' /etc/apache2/mods-available/php5.conf
 
-a2enmod userdir
-a2enmod cgid
-a2disconf serve-cgi-bin
+#a2enmod userdir
+#a2enmod cgid
+#a2disconf serve-cgi-bin
 
-systemctl reload apache2
-systemctl restart apache2
-systemctl status apache2
-echo '--'
+#systemctl reload apache2
+#systemctl restart apache2
+#systemctl status apache2
+#echo '--'
 
-echo '---- FIXING APACHE ERROR LOG SO ALL USERS CAN READ IT'
-chmod 644 /var/log/apache2/error.log
-chmod 755 /var/log/apache2
-sed -i 's/create 640 root adm/create 644 root adm/' /etc/logrotate.d/apache2
-echo '--'
+#echo '---- FIXING APACHE ERROR LOG SO ALL USERS CAN READ IT'
+#chmod 644 /var/log/apache2/error.log
+#chmod 755 /var/log/apache2
+#sed -i 's/create 640 root adm/create 644 root adm/' /etc/logrotate.d/apache2
+#echo '--'
 
 echo '--'
 echo '--'
@@ -117,10 +117,15 @@ echo '--'
 
     apt-get -qq install -y mate-core
     apt-get -qq install -y mate-desktop-environment-core
-    apt-get -qq install -y mate-tweak
-    apt-get -qq install -y mate-user-guide mate-utils-common mate-menu mate-control-center-common
+    #apt-get -qq install -y mate-tweak
+    apt-get -qq install -y mate-user-guide 
+    #apt-get -qq install -y mate-utils-common 
+    apt-get -qq install -y mate-utils
+    apt-get -qq install -y mate-menu 
+    apt-get -qq install -y mate-control-center-common
     #apt-get -qq install -y mate-core mate-desktop-environment mate-notification-daemon
-    apt-get install -y mate-themes ubuntu-mate-wallpapers-utopic ubuntu-mate-wallpapers-vivid
+    apt-get install -y mate-themes ubuntu-mate-themes
+    apt-get install -y ubuntu-mate-wallpapers-utopic ubuntu-mate-wallpapers-vivid
     apt-get install -y fonts-inconsolata fonts-dejavu fonts-droid-fallback fonts-liberation fonts-ubuntu-font-family-console
     apt-get install -y xterm vim-gnome gdebi-core pluma
     apt-get install -y firefox
@@ -185,7 +190,6 @@ echo '--------------------------------------------------------------------------
 echo '---- Do not forget to set AWS firewall to limit SSH connections to just a few specific ip addresses'
 echo '---- Admin user: ubuntu password: none, log in using AWS private key'
 echo '---- Test user: jdoe password: mucis'
-echo '---- MySQL jdoe user: jdoe password: mucis'
 echo '---- REPLACE THE ABOVE PASSWORDS'
 echo '---- REBOOT THE SERVER FROM THE AWS CONTROL PANEL'
 echo '--'
